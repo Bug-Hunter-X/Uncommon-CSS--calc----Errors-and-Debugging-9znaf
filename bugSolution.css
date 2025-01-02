@@ -1,0 +1,23 @@
+/* bugSolution.css */
+
+/* Correct Unit Usage */
+.element-correct { width: calc(100% - 10px); }
+
+/* Correct Order of Operations */
+.element-order { width: calc((100% / 2) + 50px); }
+
+/* Simplified Nested calc() */
+.element-nested { width: calc(100% - 50px); /* Removed unnecessary nesting */
+                 width: calc(50%); }
+
+/* Compatible units*/
+.element-units { width:calc(100px + 20px); /* use same units*/}
+
+/* Handle potential browser inconsistencies with fallback */
+.element-fallback {
+  width: calc(50% - 10px);
+  width: 40%; /* Fallback for older browsers or unusual calculations */
+}
+
+/* Best Practice: Keep calc() expressions Simple and Readable */
+.element-simple { width: calc(100% - 20px); }
