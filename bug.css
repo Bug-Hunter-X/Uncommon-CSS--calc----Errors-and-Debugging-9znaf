@@ -1,0 +1,47 @@
+The CSS property `calc()` is used to perform calculations within CSS. However, there are some uncommon bugs that can arise due to incorrect usage or browser inconsistencies.
+
+**Bug 1: Incorrect Unit Usage:**
+
+```css
+.element { width: calc(100% - 10px); }
+```
+
+This works fine. But if you miss the units, like this:
+
+```css
+.element { width: calc(100% - 10); }
+/* Incorrect! Missing 'px' or other unit after 10 */
+```
+
+This can lead to unexpected results.  The calculation might fail silently, or the browser might interpret the value incorrectly.
+
+**Bug 2: Order of Operations and Parentheses:**
+
+`calc()` follows standard mathematical order of operations.  Incorrect use of parentheses can lead to wrong results.
+
+```css
+.element { width: calc(100% / 2 + 50px); }
+/* Might not be what you intended */
+```
+
+Adding parentheses to control the calculation:
+
+```css
+.element { width: calc((100% / 2) + 50px); }
+/* Correct Parentheses */
+```
+
+**Bug 3: Nested `calc()` expressions:**
+
+While possible, deeply nested `calc()` expressions can be hard to read and debug.
+
+```css
+.element { width: calc(calc(100% - 50px) / 2); }
+/* Very complex and hard to read. */
+```
+
+**Bug 4: Browser inconsistencies** Although rare, minor inconsistencies between browser rendering engines in interpreting complex `calc()` expressions may exist.  Always test across major browsers.
+
+**Bug 5: Using calc() with incompatible units:** You can't mix different incompatible units. For instance, you can't do `calc(100px + 2em)` directly without conversion between pixel and em units.  
+
+Remember to test your CSS thoroughly, paying close attention to unit usage and the order of operations within `calc()` expressions.
